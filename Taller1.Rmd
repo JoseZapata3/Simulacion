@@ -39,10 +39,49 @@ Hembras <- c( 183.2, 182.5, 166.8, 184.1, 190.0, 196.3, 183.0, 178.1, 193.3, 204
 Machos <- c( 140.9, 173.9, 118.9, 121.7, 177.4, 140.0, 173.8, 154.8, 192.7, 154.5, 177.5, 134.4, 109.2, 153.4, 175.0, 150.7, 138.7, 169.8, 203.3, 136.7, 153.9, 163.0, 165.3, 176.7, 137.7, 126.7, 150.0 )
 ```
 
+a\. Haga un histograma con cinco clases y determine la distribución de los datos para cada sexo. Explique acerca de la distribución del tamaño para cada género.
+
 ```{r}
-sort(Hembras,decreasing = FALSE)
+HembrasSort <- sort(Hembras,decreasing = FALSE)
+frq <- (max(HembrasSort) - min(HembrasSort))/5
+hist(x = HembrasSort,main="Tamaño de langostinos Hembras",col = 'purple', breaks = seq(min(HembrasSort),max(HembrasSort),frq),xlab = 'Largo en mm del langostino',ylab = 'Numero de Langostinos',ylim = c(0,10),xlim = c(min(Hembras),max(Hembras)))
 ```
 
 ```{r}
-sort(Machos,decreasing = FALSE)
+MachosSort <- sort(Machos,decreasing = FALSE)
+frq <- (max(MachosSort) - min(MachosSort))/5
+hist(x = MachosSort,main="Tamaño de langostinos Machos",col = 'purple', breaks = seq(min(MachosSort),max(MachosSort),frq),xlab = 'Largo en mm del langostino',ylab = 'Numero de Langostinos',ylim = c(0,10),xlim = c(min(Machos),max(Machos)))
+```
+
+b\. Hallar el promedio y la desviación estándar para cada sexo. ¿Qué puede concluir?
+
+```{r}
+promHembras <- mean(Hembras)
+desvHembras <- sd(Hembras)
+
+sprintf("Promedio de tamano en hembras: %f",promHembras)
+sprintf("Devisación estandar: %f",desvHembras)
+
+```
+
+```{r}
+promMachos <- mean(Machos)
+desvMachos <- sd(Machos)
+
+sprintf("Promedio de tamano en hembras: %f",promMachos)
+sprintf("Devisación estandar: %f",desvMachos)
+
+```
+
+2. En un restaurante de la ciudad se sabe que la probabilidad de que se reciba un billete de \$50.000
+falso es de 0.015. Si se sabe que en una semana se reciben pagos con 900 billetes
+de \$50.000, halle la probabilidad de que:
+
+a\. A lo sumo 25 billetes sean falsos.
+
+```{r}
+
+p <- 0.001
+X <- pbinom(0,25,0.0015,FALSE)
+
 ```
