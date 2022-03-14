@@ -75,7 +75,7 @@ a\. A lo sumo 25 billetes sean falsos.
 
 ```{r}
 p <- 0.015
-X <- pbinom(25,900,p)
+Xa <- pbinom(25,900,p)
 plot(0:25,dbinom(0:25,900,p),main = 'Distribucion binomial ( n <= 25 , p = 0.015 )',ylab = 'Probabilidad',xlab = 'cantidad de billetes falsos', pch = 20, ylim = c(0,0.5))
 
 ```
@@ -86,10 +86,16 @@ b.  La cantidad de billetes falsos esté entre 20 y 30.
 p <- 0.015
 x1 <- pbinom(20,900,p)
 x2 <- pbinom(30,900,p)
-x <- x2-x1;
+xb <- x2-x1;
 plot(20:30,dbinom(20:30,900,p),main = 'Distribucion binomial ( 20 < n < 30  , p = 0.015 )',ylab = 'Probabilidad',xlab = 'cantidad de billetes falsos', pch = 20, ylim = c(0,0.2))
 ```
 
 c.  Más de 10 sean falsos.
 
-\`\`\`{r}
+```{r}
+
+p <- 0.015
+Xc <- 1 - pbinom(10,900,p)
+plot(10:900,dbinom(10:900,900,p),main = 'Distribucion binomial (  n > 10  , p = 0.015 )',ylab = 'Probabilidad',xlab = 'cantidad de billetes falsos', pch = 20)
+
+```
