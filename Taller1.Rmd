@@ -99,3 +99,33 @@ Xc <- 1 - pbinom(10,900,p)
 plot(10:900,dbinom(10:900,900,p),main = 'Distribucion binomial (  n > 10  , p = 0.015 )',ylab = 'Probabilidad',xlab = 'cantidad de billetes falsos', pch = 20)
 
 ```
+
+3.  Según un estudio del Departamento Nacional de Estadística -DANE-, la vida media para el quinquenio de 2010 a 2015 de los habitantes de Colombia es 76 años, con una varianza de 25. Se pretende hacer un estudio con el objetivo de extrapolar los resultados anteriores a una pequeña ciudad de 100.000 habitantes, considerando que el tiempo de sobrevida es normal.
+
+```{r}
+#Grafica de la distribucion normal
+plot(0:152,dnorm(0:152,76,5),type = 'l',main = 'Esperanza de vida del quinquenio',xlab = 'Tiempo en años',ylab = 'Probabilidad')
+```
+
+a.  ¿Cuántos de los habitantes de la pequeña ciudad superarán previsiblemente los 92 años?
+
+```{r}
+media <- 76
+var <- 25
+ds <- 5
+
+xa <- pnorm(92,media,ds,lower.tail = FALSE) 
+
+##falta la cantidad
+```
+
+b.  ¿Cuántos vivirán menos de 55 años o más de 75 años?
+
+```{r}
+media <- 76
+var <- 25
+ds <- 5
+
+xb <- pnorm(54,76,5) + pnorm(75,76,5,lower.tail = FALSE)
+##falta la cantidad
+```
