@@ -79,7 +79,9 @@ par(mfrow= c(1,2))
 boxplot(Hembras,  col="pink", main = "Langostinos hembras", xlab = "Tamanio de langostinos(mm)", ylab = "Frecuencia", horizontal = FALSE)
 boxplot(Machos,  col="blue", main = "Langostinos machos", xlab = "Tamanio de langostinos(mm)", ylab = "Frecuencia", horizontal = FALSE)
 ```
+
 ### Conclusión 1.D
+
 En los boxplot se puede evidenciar que los datos de los machos se encuentran mas dispersos a comparación de las hembras, también se puede notar que los datos minimos y maximos de los machos es mucho mayor que los de las hembras
 
 2. En un restaurante de la ciudad se sabe que la probabilidad de que se reciba un billete de \$50.000 falso es de 0.015. Si se sabe que en una semana se reciben pagos con 900 billetes de \$50.000, halle la probabilidad de que:
@@ -133,6 +135,7 @@ xa * 100000
 
 ##falta la cantidad
 ```
+
 de los 100.000 habitantes, 68 habitantes pueden superar los 92 años
 
 b.  ¿Cuántos vivirán menos de 55 años o más de 75 años?
@@ -144,4 +147,5 @@ probMenor= pnorm(56,media,ds, lower.tail = FALSE)
 (probMenor - probMayor)* 100000
 ##falta la cantidad
 ```
+
 de los 100.000 habitantes, 57922 habitantes pueden vivir algunos menos de los 55 años y algunos otros mas de los 75 años
