@@ -5,26 +5,6 @@ date: '2022-03-10'
 output: pdf_document
 ---
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
 ### Taller 1
 
 1.  Al comparar los caracteres morfométricos de una especie de langostinos de gran importancia económica en Argentina se observaron diferencias de tamaño entre macho y hembra. En la siguiente tabla se presentan los datos (Largo total mm) de las morfometrías de machos y hembras obtenidos en diferentes recolectas (Ruiz & Mendia, 2008).
@@ -43,11 +23,15 @@ frq <- (max(HembrasSort) - min(HembrasSort))/5
 hist(x = HembrasSort,main="Tamaño de langostinos Hembras",col = 'purple', breaks = seq(min(HembrasSort),max(HembrasSort),frq),xlab = 'Largo en mm del langostino',ylab = 'Numero de Langostinos',ylim = c(0,10),xlim = c(min(Hembras),max(Hembras)))
 ```
 
+La grafica presenta una curtosis de tipo leptocurtica ya que la mayoria de datos se encuentran agrupados en dos clases las cuales son 180 y 190, la asimetria esta dada de manera negativa ya que los datos se distribuyen de manera que los datos se encuentran por encima de la tendencia central
+
 ```{r}
 MachosSort <- sort(Machos,decreasing = FALSE)
 frq <- (max(MachosSort) - min(MachosSort))/5
 hist(x = MachosSort,main="Tamaño de langostinos Machos",col = 'purple', breaks = seq(min(MachosSort),max(MachosSort),frq),xlab = 'Largo en mm del langostino',ylab = 'Numero de Langostinos',ylim = c(0,10),xlim = c(min(Machos),max(Machos)))
 ```
+
+La grafica presenta una curtosis de tipo mesocurtica ya que los datos no presentan una agrupacion muy alta o muy baja (distribuidos normalmente), también presenta una asimetria positiva ya que los datos estan agrupados hacia la izquierda de la grafica (datos por debajo de la tendencia central)
 
 b\. Hallar el promedio y la desviación estándar para cada sexo. ¿Qué puede concluir?
 
@@ -55,19 +39,48 @@ b\. Hallar el promedio y la desviación estándar para cada sexo. ¿Qué puede c
 promHembras <- mean(Hembras)
 desvHembras <- sd(Hembras)
 
-sprintf("Promedio de tamano en hembras: %f",promHembras)
-sprintf("Devisación estandar: %f",desvHembras)
+sprintf("Promedio de tamaño en hembras: %f",promHembras)
+sprintf("Desviación estandar: %f",desvHembras)
 
 ```
+
+### Conclusión promedio y desviación estandar hembras
+
+La desviación de los datos de los langostinos (hembras) demuestra que tiene una dispersión baja ya que los datos muestran una agrupacion entre las longitudes 180 y 210 y algunos datos afuera como los de la longitud 170
 
 ```{r}
 promMachos <- mean(Machos)
 desvMachos <- sd(Machos)
 
-sprintf("Promedio de tamano en hembras: %f",promMachos)
-sprintf("Devisación estandar: %f",desvMachos)
+sprintf("Promedio de tamano en machos: %f",promMachos)
+sprintf("Desviación estandar: %f",desvMachos)
 
 ```
+
+### Conclusión promedio y desviación estandar machos
+
+La desviacion estandar de los datos de los langostinos machos demuestra que existe una dispersión alta ya que teniendo en cuenta la media (154.46) y teniendo en cuenta el histograma de los machos se puede evidenciar dicha dispersion
+
+c\. Halle un intervalo para la media del Largo total por sexo con un nivel de confianza del 97%. Provea la inter¬pretación respectiva.
+
+```{r}
+t.test(x= Hembras,mu= promHembras, conf.level = 0.97)
+t.test(x= Machos,mu= promMachos, conf.level = 0.97)
+```
+
+### Conclusión 1.C
+
+El intervalo para la media demuestra que la media para machos y para hembras esta justo en medio de dichos intervalos
+
+d\. Construya un Boxplot por sexo e interprételo
+
+```{r}
+par(mfrow= c(1,2))
+boxplot(Hembras,  col="pink", main = "Langostinos hembras", xlab = "Tamanio de langostinos(mm)", ylab = "Frecuencia", horizontal = FALSE)
+boxplot(Machos,  col="blue", main = "Langostinos machos", xlab = "Tamanio de langostinos(mm)", ylab = "Frecuencia", horizontal = FALSE)
+```
+### Conclusión 1.D
+En los boxplot se puede evidenciar que los datos de los machos se encuentran mas dispersos a comparación de las hembras, también se puede notar que los datos minimos y maximos de los machos es mucho mayor que los de las hembras
 
 2. En un restaurante de la ciudad se sabe que la probabilidad de que se reciba un billete de \$50.000 falso es de 0.015. Si se sabe que en una semana se reciben pagos con 900 billetes de \$50.000, halle la probabilidad de que:
 
@@ -116,16 +129,19 @@ ds <- 5
 
 xa <- pnorm(92,media,ds,lower.tail = FALSE) 
 
+xa * 100000
+
 ##falta la cantidad
 ```
+de los 100.000 habitantes, 68 habitantes pueden superar los 92 años
 
 b.  ¿Cuántos vivirán menos de 55 años o más de 75 años?
 
 ```{r}
-media <- 76
-var <- 25
-ds <- 5
+probMayor= pnorm(75,media,ds, lower.tail = TRUE)
+probMenor= pnorm(55,media,ds, lower.tail = TRUE)
 
-xb <- pnorm(54,76,5) + pnorm(75,76,5,lower.tail = FALSE)
+(probMayor - probMenor)* 100000
 ##falta la cantidad
 ```
+de los 100.000 habitantes, 42072 habitantes pueden vivir entre los 55 años y los 75 años
