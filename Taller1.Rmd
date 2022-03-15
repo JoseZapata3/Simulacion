@@ -144,4 +144,4 @@ probMenor= pnorm(55,media,ds, lower.tail = TRUE)
 (probMayor - probMenor)* 100000
 ##falta la cantidad
 ```
-de los 100.000 habitantes, 42072 habitantes pueden vivir entre los 55 años y los 75 años
+de los 100.000 habitantes, 42072 habitantes pueden vivir algunos menos de los 55 años y algunos otros mas de los 75 años
