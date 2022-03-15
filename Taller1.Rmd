@@ -139,9 +139,9 @@ b.  ¿Cuántos vivirán menos de 55 años o más de 75 años?
 
 ```{r}
 probMayor= pnorm(75,media,ds, lower.tail = TRUE)
-probMenor= pnorm(55,media,ds, lower.tail = TRUE)
+probMenor= pnorm(56,media,ds, lower.tail = FALSE)
 
-(probMayor - probMenor)* 100000
+(probMenor - probMayor)* 100000
 ##falta la cantidad
 ```
-de los 100.000 habitantes, 42072 habitantes pueden vivir algunos menos de los 55 años y algunos otros mas de los 75 años
+de los 100.000 habitantes, 57922 habitantes pueden vivir algunos menos de los 55 años y algunos otros mas de los 75 años
